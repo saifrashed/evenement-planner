@@ -35,5 +35,5 @@ switch ($_SERVER['PHP_SELF']) {
 <body>
 
 <header>
-
+    <h1><?php echo $title ?></h1>
 </header>
