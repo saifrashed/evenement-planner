@@ -8,12 +8,10 @@
 
 session_start();
 
-
 switch ($_SERVER['PHP_SELF']) {
     default:
         $title = 'Evenementen planner';
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -28,8 +26,8 @@ switch ($_SERVER['PHP_SELF']) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="./assets/css/grids.css">
-    <link rel="stylesheet" type="text/css" href="./assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/grids.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
 </head>
 
 <body>

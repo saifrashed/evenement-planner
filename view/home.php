@@ -6,8 +6,6 @@
  * Time: 16:03
  */
 
-require "./header.php";
-
 ?>
 
 
@@ -19,9 +17,3 @@ require "./header.php";
         </div>
 
 </div>
-
-<?php
-
-require "./footer.php";
-
-?>
