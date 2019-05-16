@@ -32,6 +32,13 @@ switch ($_SERVER['PHP_SELF']) {
 
 <body>
 
-<header>
-    <h1><?php echo $title ?></h1>
-</header>
+<div class="container-fluid">
+
+
+    <div class="row center-xs">
+        <div class="col-xs-12 col-md-4">
+            <header>
+                <h1><?php echo $title ?></h1>
+            </header>
+        </div>
+    </div>

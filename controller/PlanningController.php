@@ -13,18 +13,6 @@ class PlanningController {
         try {
             $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
             switch ($action) {
-                case 'create':
-                    $this->collectCreateProduct();
-                    break;
-                case 'read':
-                    $this->collectReadProduct();
-                    break;
-                case 'update':
-                    $this->collectUpdateProduct();
-                    break;
-                case 'delete':
-                    $this->collectDeleteProduct();
-                    break;
                 default:
                     $this->collectHome();
                     break;
@@ -39,6 +27,7 @@ class PlanningController {
     public function collectHome() {
         include 'view/home.php';
     }
+
 }
 
 
