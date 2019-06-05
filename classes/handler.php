@@ -33,7 +33,7 @@ class Handler {
         $this->dbdriver = 'mysql';
         $this->dbname   = 'event_planner';
         $this->username = 'root';
-        $this->password = 'Rashed112';
+        $this->password = '';
 
         try {
             $this->connect = new PDO("$this->dbdriver:host=" . $this->host . "; dbname=" . $this->dbname . "", $this->username, $this->password);
