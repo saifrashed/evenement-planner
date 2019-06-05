@@ -8,8 +8,6 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
     $('.footer-top-container').css('display', 'none');
 
     $('.mobile-bar').css('display', 'block');
-    $('body').css('padding-top', '150px');
-
 }
 
 /**

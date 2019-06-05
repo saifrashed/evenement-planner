@@ -8,38 +8,8 @@
 
 session_start();
 
+include './includes/constants.php';
 
-switch ($_SERVER['PHP_SELF']) {
-    case '/projecten/multiversum/home.php':
-        $title = 'Multiversum - Home';
-        break;
-    case '/projecten/multiversum/about.php':
-        $title = 'Multiversum - About';
-        break;
-    case '/projecten/multiversum/shop.php':
-        $title = 'Multiversum - Shop';
-        break;
-    case '/projecten/multiversum/contact.php':
-        $title = 'Multiversum - Contact';
-        break;
-    case '/projecten/multiversum/account.php':
-        $title = 'Multiversum - Account';
-        break;
-    case '/projecten/multiversum/cart.php':
-        $title = 'Multiversum - Cart';
-        break;
-    case '/projecten/multiversum/search.php':
-        $title = 'Multiversum - Search';
-        break;
-    case '/projecten/multiversum/admin.php':
-        $title = 'Hello ' . ucfirst($_SESSION['fname']) . ' ' . ucfirst($_SESSION['lname']);
-        break;
-    default:
-        $title = 'Home';
-}
-
-$productCart = $_SESSION['cart'];
-$cartCount   = count($productCart);
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +17,7 @@ $cartCount   = count($productCart);
 
 <head>
 
-    <title>ApiAsAService</title>
+    <title><?php echo SITE_TITLE ?></title>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -65,15 +35,10 @@ $cartCount   = count($productCart);
     <!-- Desktop menu -->
     <div class="header-menu row">
         <div class="col-md-7">
-            <a href="home.php">
-                <img src="assets/logo.png"/>
-            </a>
+                <img src="assets/logo.png" alt="evenement planner logo"/>
         </div>
 
         <nav class="col-md-5" style="text-align: right;">
-
-            <li><a href="cart.php"><i
-                            class="fas fa-shopping-cart"></i>(<?php echo '[cartCount]' ?>)</a></li>
 
             <?php if (!isset($_SESSION['fname']) && !isset($_SESSION['lname'])) { ?>
                 <li><a href="account.php">
@@ -98,7 +63,6 @@ $cartCount   = count($productCart);
         </ul>
 
         <ul style="float: right;">
-            <li><a href="cart.php"><i class="fas fa-shopping-cart"></i>(<?php echo $cartCount ?>)</a></li>
             <li><a href="account.php"><i style="padding-right:5px;" class="fas fa-user"></i></a></li>
         </ul>
 

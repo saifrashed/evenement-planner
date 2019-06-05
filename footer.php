@@ -4,37 +4,11 @@
  * Date: 2019-02-18
  * Time: 15:32
  */
-
 ?>
 
 
 <footer>
-
-    <div class="footer-top-container container-fluid">
-        <div class="row">
-            <div class="footer-list col-xs-12 col-md-4">
-                <h2>Information</h2>
-                <ul>
-                    <li><a href="contact.php">About</a></li>
-                </ul>
-            </div>
-            <div class="footer-list col-xs-12 col-md-4">
-                <h2>About</h2>
-                <ul>
-                    <li><a href="about.php">About</a></li>
-                </ul>
-            </div>
-            <div class="footer-list col-xs-12 col-md-4">
-                <h2>Contact</h2>
-                <ul>
-                    <li><a href="contact.php'">Details</a></li>
-                </ul>
-            </div>
-        </div>
-
-    </div>
-
-    <span class="footer-copyright">Copyright © 2019 ApiAsAService BV. All Rights Reserved</span>
+    <span class="footer-copyright">Copyright © 2019 <?php echo COMPANY_NAME ?> All Rights Reserved</span>
 </footer>
 
 <!-- Scripts -->

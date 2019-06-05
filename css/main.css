@@ -20,21 +20,16 @@ header {
 }
 
 header .header-menu {
-    height: 75px;
-    padding: 5px;
-    margin-right: 0;
-    margin-left: 0;
-    background-image: linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
-
-    z-index: 100000;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-}
-
-header .header-menu h1 {
-    color: black;
+    height: 75px;
+    padding: 5px;
+    margin-right: 0;
+    margin-left: 0;
+    box-shadow: 0px 0px 20px -10px #561642;
+    z-index: 100000;
 }
 
 header .header-menu nav {
@@ -60,7 +55,7 @@ header .header-menu nav li {
 
 
 header .header-menu nav a {
-    color: #fff;
+    color: #c51367;
     font-size: 1em;
     text-decoration: none;
     transition: 0.15s color ease-in-out;
@@ -104,7 +99,6 @@ header .header-menu form input[type="text"]::placeholder {
 
 /* Mobile bar */
 
-
 header .mobile-bar {
     display: none;
     float: left;
@@ -114,21 +108,7 @@ header .mobile-bar {
     right: 0;
     height: 75px;
     padding: 0px 25px;
-    background: linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
-    z-index: 100000;
-
-}
-
-header .mobile-bar {
-    display: none;
-    float: left;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 75px;
-    padding: 0px 25px;
-    background: linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+    box-shadow: 0px 0px 20px -10px #561642;
     z-index: 100000;
 }
 
@@ -144,7 +124,7 @@ header .mobile-bar ul li {
 }
 
 header .mobile-bar ul li a {
-    color: white;
+    color: #c51367;
     font-size: 2.5em;
 }
 
@@ -440,9 +420,10 @@ Login page
     position: relative;
     z-index: 1;
     background: #FFFFFF;
-    max-width: 400px;
-    margin: 0 auto 100px;
+    max-width: 600px;
+    margin: 200px auto;
     padding: 45px;
+    border-radius: 50px;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
@@ -468,7 +449,7 @@ Login page
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #4CAF50;
+    background: #c51367;
     width: 100%;
     border: 0;
     padding: 15px;
@@ -480,7 +461,7 @@ Login page
 }
 
 .form button:hover, .form button:active, .form button:focus {
-    background: #43A047;
+    background: #561742;
 }
 
 .registration-message, .login-message {
@@ -682,9 +663,9 @@ footer span.footer-copyright {
     float: left;
     width: 100%;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1em;
     color: #fff;
-    background: linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+    background: #561742;
 }
 
 .footer-top-container {

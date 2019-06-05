@@ -11,13 +11,18 @@ require "./header.php";
 ?>
 
 <div class="form">
-    <h1> Welcome </h1>
+    <h1>Heading</h1>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum nisi sed ornare pellentesque. Nulla eget
+        varius ante. Maecenas id consectetur leo. Fusce imperdiet scelerisque cursus. Cras lacus turpis, pulvinar ut
+        enim eu, facilisis facilisis tortor.
+    </p>
 
     <form action='includes/registration.php' method='POST' class="register-form">
 
         <?php
-        if(isset($_GET['status'])) {
-            echo '<span class="status">'. $_GET['status'] .'</span>';
+        if (isset($_GET['status'])) {
+            echo '<span class="status">' . $_GET['status'] . '</span>';
         }
         ?>
 
@@ -38,13 +43,12 @@ require "./header.php";
     </form>
 
     <form action="includes/login.php" method="POST" class="login-form">
-
         <?php
-        if(isset($_GET['status'])) {
-            echo '<span class="status">'. $_GET['status'] .'</span>';
+        if (isset($_GET['status'])) {
+            echo '<span class="status">' . $_GET['status'] . '</span>';
         }
         ?>
-        <span class="login-message"><?php  ?></span>
+        <span class="login-message"><?php ?></span>
         <input type="email" name="email" placeholder="Email"/>
         <input type="password" name="password" placeholder="Password"/>
         <button>Login</button>
