@@ -11,11 +11,9 @@ require "./header.php";
 ?>
 
 <div class="form">
-    <h1>Heading</h1>
+    <h1>Log in</h1>
     <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum nisi sed ornare pellentesque. Nulla eget
-        varius ante. Maecenas id consectetur leo. Fusce imperdiet scelerisque cursus. Cras lacus turpis, pulvinar ut
-        enim eu, facilisis facilisis tortor.
+        Login with your given account.
     </p>
 
     <form action='includes/registration.php' method='POST' class="register-form">

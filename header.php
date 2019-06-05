@@ -35,7 +35,9 @@ include './includes/constants.php';
     <!-- Desktop menu -->
     <div class="header-menu row">
         <div class="col-md-7">
+            <a href="###">
                 <img src="assets/logo.png" alt="evenement planner logo"/>
+            </a>
         </div>
 
         <nav class="col-md-5" style="text-align: right;">
@@ -72,10 +74,7 @@ include './includes/constants.php';
 
             <nav class="col-xs-12">
                 <ul>
-                    <li><a href="home.php">Home</a></li>
-                    <li><a href="about.php">About</a></li>
-                    <li><a href="shop.php">Shop</a></li>
-                    <li><a href="contact.php">Contact</a></li>
+                    <li><a href="###">Logout</a></li>
                 </ul>
             </nav>
         </div>

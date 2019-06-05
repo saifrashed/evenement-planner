@@ -45,7 +45,7 @@ $('.logout-btn').click(function () {
     var logout = confirm("Are you sure to logout?");
 
     if (logout) {
-        location.href = "../multiversum/includes/logout.php";
+        location.href = "../event_planner/includes/logout.php";
     }
 });
 

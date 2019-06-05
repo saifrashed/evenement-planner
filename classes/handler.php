@@ -5,6 +5,8 @@
  * Time: 16:23
  */
 
+
+
 /**
  * Class handler
  */
@@ -29,7 +31,7 @@ class Handler {
     public function __construct() {
         $this->host     = 'localhost';
         $this->dbdriver = 'mysql';
-        $this->dbname   = 'multiversum';
+        $this->dbname   = 'event_planner';
         $this->username = 'root';
         $this->password = 'Rashed112';
 

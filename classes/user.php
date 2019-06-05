@@ -67,7 +67,7 @@ class User extends Handler {
             $_SESSION['admin'] = $row['admin'];
 
 
-            return header("Location: ../home.php");
+            return header("Location: ../dashboard.php");
         } else {
             return header("Location: ../account.php?status=E-mail/password incorrect");
         }
@@ -81,7 +81,7 @@ class User extends Handler {
         session_start();
         unset($_SESSION);
         session_destroy();
-        return header("Location: ../home.php");
+        return header("Location: ../account.php");
     }
 
 
