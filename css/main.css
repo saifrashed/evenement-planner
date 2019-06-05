@@ -62,7 +62,7 @@ header .header-menu nav li {
 
 
 header .header-menu nav a {
-    color: #c51367;
+    color: #561642;
     font-size: 1em;
     text-decoration: none;
     transition: 0.15s color ease-in-out;
@@ -101,6 +101,12 @@ header .header-menu form input[type="text"] {
 
 header .header-menu form input[type="text"]::placeholder {
     color: #fff;
+}
+
+.page-title {
+    text-align: center;
+    line-height: 75px;
+    color: #000;
 }
 
 /* Mobile bar */

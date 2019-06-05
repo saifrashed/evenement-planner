@@ -10,6 +10,24 @@ session_start();
 
 include './includes/constants.php';
 
+$title   = '';
+$relPath = dirname($_SERVER['SCRIPT_NAME']);
+
+switch ($_SERVER['PHP_SELF']) {
+    case $relPath . '/account.php':
+        $title = 'Account';
+        break;
+    case $relPath . '/dashboard.php':
+        $title = 'Dashboard';
+        break;
+    case $relPath . '/admin.php':
+        $title = 'Admin';
+        break;
+    default:
+        $title = 'Evenementen planner';
+        break;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -34,16 +52,30 @@ include './includes/constants.php';
 
     <!-- Desktop menu -->
     <div class="header-menu row">
-        <div class="col-md-7">
+        <div class="col-md-4">
             <a href="###">
                 <img src="assets/logo.png" alt="evenement planner logo"/>
             </a>
         </div>
 
-        <nav class="col-md-5" style="text-align: right;">
+        <div class="col-md-4">
+            <h1 class="page-title"><?php echo $title ?></h1>
+        </div>
+
+        <nav class="col-md-4" style="text-align: right;">
+
+            <?php if ($_SESSION['admin']) { ?>
+                <li>
+                    <a href="admin.php">
+                        <i class="fas fa-cogs"></i>
+                    </a>
+                </li>
+            <?php } ?>
+
 
             <?php if (!isset($_SESSION['fname']) && !isset($_SESSION['lname'])) { ?>
-                <li><a href="account.php">
+                <li>
+                    <a href="account.php">
                         <i style="padding-right:5px;" class="fas fa-user"></i>Account
                     </a>
                 </li>

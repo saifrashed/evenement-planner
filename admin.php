@@ -10,7 +10,7 @@ require "./header.php";
 ?>
 
 
-<?php if($_SESSION) { ?>
+<?php if($_SESSION['admin']) { ?>
 
 <div class="container-fluid">
     <div class="row">
