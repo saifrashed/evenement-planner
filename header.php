@@ -64,22 +64,13 @@ $cartCount   = count($productCart);
 
     <!-- Desktop menu -->
     <div class="header-menu row">
-        <div class="col-2">
+        <div class="col-md-7">
             <a href="home.php">
                 <img src="assets/logo.png"/>
             </a>
         </div>
-        <nav class="col-5">
-            <ul>
-                <li><a href="home.php">Home</a></li>
-                <li><a href="about.php">About</a></li>
-                <li><a href="shop.php">Shop</a></li>
-                <li><a href="contact.php">Contact</a></li>
-            </ul>
-        </nav>
 
-
-        <nav class="col-5" style="text-align: right;">
+        <nav class="col-md-5" style="text-align: right;">
 
             <li><a href="cart.php"><i
                             class="fas fa-shopping-cart"></i>(<?php echo '[cartCount]' ?>)</a></li>
@@ -129,7 +120,3 @@ $cartCount   = count($productCart);
 
 
 </header>
-
-<section class="slider">
-    <h1 class="slider-title"><?php echo $title; ?></h1>
-</section>
