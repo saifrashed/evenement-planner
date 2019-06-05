@@ -1,8 +1,10 @@
 <?php
-include 'view/header.php';
-require_once 'controller/PlanningController.php';
+/**
+ * User: saifeddine
+ * Date: 2019-02-18
+ * Time: 15:32
+ */
 
-$controller = new PlanningController();
-$controller->handleRequest();
-include 'view/footer.php';
+include './home.php';
+
 ?>
