@@ -62,9 +62,10 @@ class User extends Handler {
         $status = password_verify($password, $row['password']);
 
         if ($status) {
+            $_SESSION['id']    = $row['id'];
             $_SESSION['fname'] = $row['fname'];
             $_SESSION['lname'] = $row['lname'];
-            $_SESSION['admin'] = $row['admin'];
+            $_SESSION['role']  = $row['role'];
 
 
             return header("Location: ../dashboard.php");

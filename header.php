@@ -53,7 +53,7 @@ switch ($_SERVER['PHP_SELF']) {
     <!-- Desktop menu -->
     <div class="header-menu row">
         <div class="col-md-4">
-            <a href="###">
+            <a href="dashboard.php">
                 <img src="assets/logo.png" alt="evenement planner logo"/>
             </a>
         </div>
@@ -64,7 +64,7 @@ switch ($_SERVER['PHP_SELF']) {
 
         <nav class="col-md-4" style="text-align: right;">
 
-            <?php if ($_SESSION['admin']) { ?>
+            <?php if ($_SESSION['role']) { ?>
                 <li>
                     <a href="admin.php">
                         <i class="fas fa-cogs"></i>
@@ -76,13 +76,13 @@ switch ($_SERVER['PHP_SELF']) {
             <?php if (!isset($_SESSION['fname']) && !isset($_SESSION['lname'])) { ?>
                 <li>
                     <a href="account.php">
-                        <i style="padding-right:5px;" class="fas fa-user"></i>Account
+                        <i class="fas fa-user right-offset"></i>Log in
                     </a>
                 </li>
             <?php } else { ?>
                 <li>
                     <button type="submit" class="logout-btn">
-                        <i style="padding-right:5px;" class="fas fa-sign-out-alt"></i>Logout
+                        <i class="fas fa-sign-out-alt right-offset"></i>Logout
                     </button>
                 </li>
             <?php } ?>
@@ -90,15 +90,22 @@ switch ($_SERVER['PHP_SELF']) {
         </nav>
     </div>
 
+    <!-- Mobile menu -->
     <div class="mobile-bar">
 
         <ul style="float: left;">
             <li><a class="open-toggle" href="#"><i class="fas fa-bars"></i></a></li>
         </ul>
 
-        <ul style="float: right;">
-            <li><a href="account.php"><i style="padding-right:5px;" class="fas fa-user"></i></a></li>
-        </ul>
+        <?php if (!isset($_SESSION['fname']) && !isset($_SESSION['lname'])) { ?>
+            <ul style="float: right;">
+                <li><a href="account.php"><i class="fas fa-user right-offset"></i>Login</a></li>
+            </ul>
+        <?php } else { ?>
+            <ul style="float: right;">
+                <li><a href="dashboard.php"><i class="fas fa-user right-offset"></i></a></li>
+            </ul>
+        <?php } ?>
 
         <div class="popup-menu close-menu col-xs-12">
 
@@ -106,7 +113,8 @@ switch ($_SERVER['PHP_SELF']) {
 
             <nav class="col-xs-12">
                 <ul>
-                    <li><a href="###">Logout</a></li>
+                    <li><a href="dashboard.php">Dashboard</a></li>
+                    <li><a class="logout-btn">Logout</a></li>
                 </ul>
             </nav>
         </div>

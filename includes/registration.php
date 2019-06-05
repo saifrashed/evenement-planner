@@ -20,9 +20,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password  = cleanse($_POST['password']);
     $email     = cleanse($_POST['email']);
     $gender    = cleanse($_POST['gender']);
-    $city      = cleanse($_POST['city']);
-    $street    = cleanse($_POST['street']);
-    $postal    = cleanse($_POST['postal']);
 }
 
 /**

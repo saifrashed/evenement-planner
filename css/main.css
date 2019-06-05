@@ -109,6 +109,10 @@ header .header-menu form input[type="text"]::placeholder {
     color: #000;
 }
 
+.right-offset {
+    padding-right:5px;
+}
+
 /* Mobile bar */
 
 header .mobile-bar {

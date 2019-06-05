@@ -12,8 +12,8 @@ include '../classes/user.php';
 $user = new User();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = cleanse($_POST['email']);
-    $password  = cleanse($_POST['password']);
+    $email    = cleanse($_POST['email']);
+    $password = cleanse($_POST['password']);
 }
 
 /**
