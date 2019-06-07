@@ -33,10 +33,12 @@ class Handler {
         $this->dbdriver = 'mysql';
         $this->dbname   = 'event_planner';
         $this->username = 'root';
-        $this->password = '';
+        $this->password = 'Rashed112';
+
+        $dsn = "$this->dbdriver:host=$this->host;dbname=$this->dbname";
 
         try {
-            $this->connect = new PDO("$this->dbdriver:host=" . $this->host . "; dbname=" . $this->dbname . "", $this->username, $this->password);
+            $this->connect = new PDO($dsn, $this->username, $this->password);
             $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return true;
         } catch (PDOException $e) {
@@ -65,6 +67,10 @@ class Handler {
     public function deleteData($sql) {
         $result = $this->connect->query($sql);
         return $result->rowCount();
+    }
+
+    public function test() {
+        $this->connect = new PDO("$this->dbdriver:host=" . $this->host . "; dbname=" . $this->dbname . "", $this->username, $this->password);
     }
 
 }

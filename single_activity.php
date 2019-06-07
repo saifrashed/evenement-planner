@@ -8,22 +8,23 @@
 
 require "./header.php";
 
-$admin = new Admin();
+$activity = new Activity();
 
 ?>
 
 
-<?php if ($_SESSION['role']) { ?>
+<?php if ($_SESSION) { ?>
 
     <div class="container-fluid">
         <div class="row center-xs">
-            <div class="col-xs-12 col-md-10 control-window">
+            <p><?php echo '<pre>' . var_dump($_SESSION) . '</pre>' ?></p>
 
-                <p><?php echo '<pre>' . var_dump($_SESSION) . '</pre>' ?></p>
+            <div class="col-xs-12 col-md-10 control-window">
+            <?php echo $activity->displaySingle($_GET['activity_id']); ?>
+
             </div>
         </div>
     </div>
-
 
 <?php } ?>
 

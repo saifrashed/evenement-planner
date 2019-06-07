@@ -8,7 +8,7 @@
 include 'handler.php';
 
 /**
- * The admin class handles admin control and functionality
+ * The User class handles user specific actions and validation
  *
  *
  * @author   Saif Rashed <saifeddinerashed@icloud.com>

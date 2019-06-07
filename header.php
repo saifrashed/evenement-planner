@@ -9,24 +9,9 @@
 session_start();
 
 include './includes/constants.php';
+include './includes/functions.php';
 
-$title   = '';
-$relPath = dirname($_SERVER['SCRIPT_NAME']);
-
-switch ($_SERVER['PHP_SELF']) {
-    case $relPath . '/account.php':
-        $title = 'Account';
-        break;
-    case $relPath . '/dashboard.php':
-        $title = 'Dashboard';
-        break;
-    case $relPath . '/admin.php':
-        $title = 'Admin';
-        break;
-    default:
-        $title = 'Evenementen planner';
-        break;
-}
+$title = setTitle($_SERVER['PHP_SELF'], dirname($_SERVER['SCRIPT_NAME']));
 
 ?>
 

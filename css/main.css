@@ -245,184 +245,93 @@ Category bar
 
 /**
 
-Products archive
+Control window
 
  */
 
-.product-list {
-    display: block;
-    margin: 0px auto;
-    border-radius: 25px;
-    box-shadow: 0px 5px 50px -30px #000;
+.control-window {
+    padding: 50px 0px;
+    box-shadow: 0px 0px 5px -2px #000;
+    border-radius: 50px;
 }
 
-.product-list li.product-item {
-    position: relative;
+.control-window h1,
+.control-window h2,
+.control-window h3,
+.control-window h4,
+.control-window h5 {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.control-window .activity-display {
+    float:left;
     display: inline-block;
-    clear: both;
-    margin: 25px 5px;
-    text-align: center;
-    border: 1px solid #2cb5e8;
-    min-height: 300px;
-    border-radius: 25px;
+    padding: 25px 25px;
+    border: 1px solid black;
 }
 
-.product-list li.product-item img {
-    display: block;
-    width: 75%;
-    margin: 0 auto;
+.control-window .activity-toolbar {
+    float:right;
+    display: inline-block;
+    padding: 25px 100px;
+    border: 1px solid black;
 }
 
-.product-list li.product-item .product-title a {
-    padding: 10px 0px;
-    font-size: 1.1em;
-    color: #00b7ed;
+.control-window .activity-controls {
+     border: 1px solid black;
+ }
+
+
+/** Activity controls **/
+.control-window .activity-actions {
+    height: 125px;
+    border: 1px solid black;
 }
 
-.product-list li.product-item .product-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+.control-window .activity-numbers {
     height: 50px;
-    background: #2cb5e8;
-    border-radius: 0px 0px 25px 25px;
-    color: #fff;
-    font-size: 1.25em;
+    border: 1px solid black;
+
+}
+
+/** Activity selection **/
+.activity-selection {
+    height: 500px;
+    padding: 0;
+    border: 1px solid #000;
+    overflow-x: scroll;
+}
+
+.activity-selection .activity-select {
+    border-bottom: 1px solid #000;
+    height: 50px;
+}
+
+.activity-selection .activity-select h5{
+    display: block;
+    padding: 0px 25px;
+    text-align: left;
     line-height: 50px;
 }
 
-.product-list li.product-item .product-sale {
-    position: absolute;
-    top:0;
-    left:0;
-    padding: 5px 10px;
-    font-size: 1.5em;
-    font-weight: 600;
-    border-radius: 20px;
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 0px;
-    color: white;
-    background: #00b7ed;
-}
-.product-list li.product-item .add_to_cart_btn,
-.product-list li.product-item .add_to_cart_btn:visited,
-.product-list li.product-item .add_to_cart_btn:active {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    left: 0;
-    padding: 0px 20px;
-    float: left;
-    color: #fff;
-    background: none;
-    border: none;
-    outline: 0;
+/** Member selection **/
+.control-window .activity-members {
+    margin: 25px 0px 0px 0px;
+    border: 1px solid black;
 }
 
-img.highlighted-sale {
-    position: absolute;
-    top: 0px;
-    left: -100px;
-    width: 25%;
-    z-index: 100000;
+.control-window .activity-member-selection {
+    height: 257.5px;
+    border: 1px solid black;
 }
 
-h2.highlighted-title {
-    font-size: 2em;
-    font-weight: 600;
-    padding: 25px 0px;
-}
-
-.shop_summary {
-    display: block;
-    margin: 0 auto;
-    text-align: left;
-    width: 50%
-}
-
-.shop_summary h1 {
-    text-align: center;
-}
-
-.message {
-    padding: 15px;
-    background-color: #53c3ce;
-    color: #fff;
-    font-size: 1.25em;
-    border-radius: 25px;
-}
-
-.message a {
-    float: right;
-    color: #fff;
-}
-
-.message a:hover {
-    cursor: pointer;
-}
-
-/**
-    Pagination
- */
-
-.product-list .pagination {
-
-}
-
-.product-list .pagination li.page-item:hover {
-    cursor: pointer;
-}
-
-/**
-    Product single
- */
-
-.product-single {
-    display: block;
-    margin: 0 auto;
-    width: 90%;
-}
-
-.product-single div.product-image {
-    display: inline-block;
-    width: 50%;
-    vertical-align: top;
-}
-
-.product-single div.product-image img {
-    display: block;
-    width: 85%;
-    height: auto;
-}
-
-.product-single div.product-summary {
-    display: inline-block;
-    width: 49%;
-}
-
-.product-single div.product-summary span.product-price {
-    display: block;
-    width: 100%;
-    padding: 10px 0px;
-    color: green;
-    font-size: 2em;
-}
-
-.product-single div.product-summary button {
-    padding: 10px 25px;
-    font-size: 1.25em;
-    border-radius: 25px;
-}
-
-.product-single div.product-summary button:focus {
-    outline: none;
-}
-
-.product-single div.product-summary button i {
-    padding-right: 15px;
+.control-window .activity-member-select {
+    height: 50px;
+    padding: 0;
+    border: 1px solid black;
 }
 
 
