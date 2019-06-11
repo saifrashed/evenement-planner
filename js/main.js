@@ -50,6 +50,43 @@ $('.logout-btn').click(function () {
 });
 
 /**
+ * Activity dynamic selection
+ */
+
+var activitySelect   = $('div.activity-select');
+var activitySelected = 1;
+
+activitySelect.first().addClass('selected');
+
+activitySelect.click(function () {
+    activitySelect.each(function () {
+        $(this).removeClass('selected');
+    });
+
+    activitySelected = $(this).attr('data-activity-id');
+
+    $(this).addClass('selected');
+
+    console.log(activitySelected);
+});
+
+/**
+ * Activity actions
+ */
+
+function viewTodos() {
+    window.location.href = "todos.php?activity_id=" + activitySelected;
+}
+
+function viewSingle() {
+    window.location.href = "single_activity.php?activity_id=" + activitySelected;
+}
+
+function viewPlanning() {
+
+}
+
+/**
  * Mobile toggle
  */
 
@@ -122,7 +159,7 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
     type: 'pie',
 
-    data: {
+    data:    {
         labels:   ['Amount Products', 'Products Sold', 'Average prices'],
         datasets: [{
             label:           'My First dataset',
@@ -149,5 +186,4 @@ $('.open-description').click(function () {
 $('.close-description').click(function () {
     $(this).parent().parent().parent().css('display', 'none');
 });
-
 

@@ -26,6 +26,9 @@ function setTitle($filePath, $relPath) {
         case $relPath . '/admin.php':
             $title = 'Admin';
             break;
+        case $relPath . '/todos.php':
+            $title = 'Taken';
+            break;
         default:
             $title = 'Evenementen planner';
             break;

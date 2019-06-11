@@ -22,6 +22,9 @@ $activity = new Activity();
             <div class="col-xs-12 col-md-10 control-window">
             <?php echo $activity->displaySingle($_GET['activity_id']); ?>
 
+            <?php echo $activity->amountMembers(1); ?>
+
+
             </div>
         </div>
     </div>

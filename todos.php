@@ -22,7 +22,7 @@ $activity = new Activity();
             <div class="col-xs-12 col-md-10 control-window">
 
                 <div class="col-xs-12 col-md-6 activity-display">
-                    <h2>Activiteiten</h2>
+                    <h2>Taken</h2>
                     <div class="col-xs-12 activity-selection">
                         <?php echo $activity->displayArchive(); ?>
                     </div>
@@ -34,21 +34,18 @@ $activity = new Activity();
                     <div class="col-xs-12 activity-controls">
                         <h2>Acties</h2>
                         <div class="col-xs-12 activity-actions">
-                            <button class="btn btn-primary" onclick="viewTodos()" target="_blank" >Taken</button>
-                            <button class="btn btn-primary" onclick="viewSingle()" target="_blank" >Details</button>
-                            <button class="btn btn-primary">Planning</button>
+                            <button class="btn btn-primary">Bezig</button>
+                            <button class="btn btn-primary">In wacht</button>
+                            <button class="btn btn-primary">Klaar</button>
 
-                        </div>
-                        <div class="col-xs-12 activity-numbers">
-                            <span>numbers</span>
                         </div>
                     </div>
 
                     <div class="col-xs-12 activity-members">
-                        <h2>members</h2>
-                        <div class="col-xs-12 activity-member-selection">
-                            <div class="col-xs-12 activity-member-select">
-                                <span>member</span>
+                        <h2>Taak</h2>
+                        <div class="col-xs-12">
+                            <div class="col-xs-12">
+                                <span>Beschrijving</span>
                             </div>
                         </div>
                     </div>

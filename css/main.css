@@ -308,13 +308,29 @@ Control window
 .activity-selection .activity-select {
     border-bottom: 1px solid #000;
     height: 50px;
+    padding: 0px 25px;
+}
+
+.activity-selection .activity-select:hover {
+    cursor: pointer;
 }
 
 .activity-selection .activity-select h5{
     display: block;
-    padding: 0px 25px;
-    text-align: left;
+    float: left;
     line-height: 50px;
+}
+
+.activity-selection .activity-select span{
+    display: block;
+    color: #80858a;
+    float: right;
+    line-height: 50px;
+}
+
+.selected {
+    color: #de4087;
+    transition: 0.1s all ease-in-out;
 }
 
 /** Member selection **/
