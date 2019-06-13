@@ -287,14 +287,13 @@ Control window
 
 /** Activity controls **/
 .control-window .activity-actions {
-    height: 125px;
+    margin: 25px 0px;
     border: 1px solid black;
 }
 
-.control-window .activity-numbers {
-    height: 50px;
-    border: 1px solid black;
-
+.control-window .activity-actions button {
+    width: 50%;
+    margin: 5px 0px;
 }
 
 /** Activity selection **/
@@ -309,6 +308,7 @@ Control window
     border-bottom: 1px solid #000;
     height: 50px;
     padding: 0px 25px;
+    transition: 0.25s all ease-in-out;
 }
 
 .activity-selection .activity-select:hover {
@@ -330,7 +330,8 @@ Control window
 
 .selected {
     color: #de4087;
-    transition: 0.1s all ease-in-out;
+    box-shadow: 0px 0px 10px 0px #a0a0a0;
+    transition: 0.25s all ease-in-out;
 }
 
 /** Member selection **/

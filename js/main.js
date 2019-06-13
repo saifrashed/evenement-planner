@@ -53,10 +53,15 @@ $('.logout-btn').click(function () {
  * Activity dynamic selection
  */
 
+var selectedTitle   = $('h3.selected-title');
+
 var activitySelect   = $('div.activity-select');
 var activitySelected = 1;
+var initialActivity  = activitySelect.first();
 
-activitySelect.first().addClass('selected');
+
+initialActivity.addClass('selected');
+selectedTitle.html(initialActivity.first().attr('data-activity-name'));
 
 activitySelect.click(function () {
     activitySelect.each(function () {
@@ -64,6 +69,7 @@ activitySelect.click(function () {
     });
 
     activitySelected = $(this).attr('data-activity-id');
+    selectedTitle.html($(this).attr('data-activity-name'));
 
     $(this).addClass('selected');
 
@@ -82,8 +88,8 @@ function viewSingle() {
     window.location.href = "single_activity.php?activity_id=" + activitySelected;
 }
 
-function viewPlanning() {
-
+function viewTimeline() {
+    window.location.href = "timeline.php?activity_id=" + activitySelected;
 }
 
 /**

@@ -33,14 +33,12 @@ $activity = new Activity();
 
                     <div class="col-xs-12 activity-controls">
                         <h2>Acties</h2>
+
                         <div class="col-xs-12 activity-actions">
+                            <h3 class="selected-title"></h3>
                             <button class="btn btn-primary" onclick="viewTodos()" target="_blank" >Taken</button>
                             <button class="btn btn-primary" onclick="viewSingle()" target="_blank" >Details</button>
-                            <button class="btn btn-primary">Planning</button>
-
-                        </div>
-                        <div class="col-xs-12 activity-numbers">
-                            <span>numbers</span>
+                            <button class="btn btn-primary" onclick="viewTimeline()">Planning</button>
                         </div>
                     </div>
 

@@ -17,13 +17,14 @@ include 'handler.php';
  */
 class User extends Handler {
 
+
     /**
      *
      * Validates and adds user to the model.
      *
      * @return string
      */
-    public function createUser($firstName, $lastName, $password, $email, $gender, $city, $street, $postal) {
+    public function createUser($firstName, $lastName, $password, $email, $gender) {
 
         $result = $this->readsData('SELECT * FROM users WHERE email="' . $email . '"');
 
@@ -65,8 +66,7 @@ class User extends Handler {
             $_SESSION['id']    = $row['id'];
             $_SESSION['fname'] = $row['fname'];
             $_SESSION['lname'] = $row['lname'];
-            $_SESSION['role']  = $row['role'];
-
+            $_SESSION['role']  = $this->userRole($row['id']);
 
             return header("Location: ../dashboard.php");
         } else {
@@ -83,6 +83,13 @@ class User extends Handler {
         unset($_SESSION);
         session_destroy();
         return header("Location: ../account.php");
+    }
+
+    public function userRole($userId) {
+        $result = $this->readsData('SELECT role.description FROM users, role WHERE users.id='.$userId.' AND users.role=role.role_id;');
+        $row = $result->fetch();
+
+        return $row['description'];
     }
 
 

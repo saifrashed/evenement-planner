@@ -24,7 +24,7 @@ $activity = new Activity();
                 <div class="col-xs-12 col-md-6 activity-display">
                     <h2>Taken</h2>
                     <div class="col-xs-12 activity-selection">
-                        <?php echo $activity->displayArchive(); ?>
+                        <?php echo $activity->getMemberActivities($_GET['activity_id'], $_SESSION['id']); ?>
                     </div>
                 </div>
 
@@ -34,6 +34,7 @@ $activity = new Activity();
                     <div class="col-xs-12 activity-controls">
                         <h2>Acties</h2>
                         <div class="col-xs-12 activity-actions">
+                            <h3 class="selected-title"></h3>
                             <button class="btn btn-primary">Bezig</button>
                             <button class="btn btn-primary">In wacht</button>
                             <button class="btn btn-primary">Klaar</button>
