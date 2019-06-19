@@ -41,6 +41,6 @@ function cleanse($data) {
 }
 
 
-$user->createUser($firstName, $lastName, $password, $email, (int)$gender, $city, $street, $postal);
+$user->createUser($firstName, $lastName, $password, $email, (int)$gender);
 
 

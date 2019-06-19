@@ -70,5 +70,4 @@ class Activity extends Handler {
 
         return $html;
     }
-
 }

@@ -49,7 +49,7 @@ $title = setTitle($_SERVER['PHP_SELF'], dirname($_SERVER['SCRIPT_NAME']));
 
         <nav class="col-md-4" style="text-align: right;">
 
-            <?php if ($_SESSION['role']) { ?>
+            <?php if ($_SESSION['role'] == 'beheerder') { ?>
                 <li>
                     <a href="admin.php">
                         <i class="fas fa-cogs"></i>

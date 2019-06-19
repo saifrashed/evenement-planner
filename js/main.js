@@ -16,27 +16,27 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
  * @type {jQuery|HTMLElement}
  */
 
-// var loginBtn    = $('a#login-toggle');
-// var loginForm   = $('.login-form');
-// var registrForm = $('.register-form');
-//
-// var hasAccount = true;
-//
-// loginBtn.click(() => {
-//
-//     if (!hasAccount) {
-//         loginForm.css('display', 'none');
-//         registrForm.css('display', 'block');
-//         hasAccount = !hasAccount;
-//     } else {
-//         loginForm.css('display', 'block');
-//         registrForm.css('display', 'none');
-//         hasAccount = !hasAccount;
-//     }
-//
-// });
+var loginBtn    = $('a#login-toggle');
+var loginForm   = $('.login-form');
+var registrForm = $('.register-form');
 
-$('.form-message').css('display', 'none');
+var hasAccount = true;
+
+loginBtn.click(() => {
+
+    if (!hasAccount) {
+        loginForm.css('display', 'none');
+        registrForm.css('display', 'block');
+        hasAccount = !hasAccount;
+    } else {
+        loginForm.css('display', 'block');
+        registrForm.css('display', 'none');
+        hasAccount = !hasAccount;
+    }
+
+});
+
+// $('.form-message').css('display', 'none');
 
 /**
  * Logout confirm
@@ -53,8 +53,7 @@ $('.logout-btn').click(function () {
  * Activity dynamic selection
  */
 
-var selectedTitle   = $('h3.selected-title');
-
+var selectedTitle    = $('h3.selected-title');
 var activitySelect   = $('div.activity-select');
 var activitySelected = 1;
 var initialActivity  = activitySelect.first();
@@ -156,6 +155,9 @@ if (errorMessage) {
 
 var values = [];
 
+$('span.statistics-result').each(function () {
+    values.push($(this).text());
+});
 $('span.statistics-result').each(function () {
     values.push($(this).text());
 });

@@ -36,6 +36,7 @@ header .header-menu {
     height: 75px;
     padding: 5px;
     box-shadow: 0px 0px 20px -10px #561642;
+    background-color: #fff;
     z-index: 100000;
 }
 
@@ -110,7 +111,7 @@ header .header-menu form input[type="text"]::placeholder {
 }
 
 .right-offset {
-    padding-right:5px;
+    padding-right: 5px;
 }
 
 /* Mobile bar */
@@ -125,6 +126,7 @@ header .mobile-bar {
     height: 75px;
     padding: 0px 25px;
     box-shadow: 0px 0px 20px -10px #561642;
+    background-color: #fff;
     z-index: 100000;
 }
 
@@ -265,24 +267,23 @@ Control window
 }
 
 
-
 .control-window .activity-display {
-    float:left;
+    float: left;
     display: inline-block;
     padding: 25px 25px;
     border: 1px solid black;
 }
 
 .control-window .activity-toolbar {
-    float:right;
+    float: right;
     display: inline-block;
     padding: 25px 100px;
     border: 1px solid black;
 }
 
 .control-window .activity-controls {
-     border: 1px solid black;
- }
+    border: 1px solid black;
+}
 
 
 /** Activity controls **/
@@ -315,13 +316,13 @@ Control window
     cursor: pointer;
 }
 
-.activity-selection .activity-select h5{
+.activity-selection .activity-select h5 {
     display: block;
     float: left;
     line-height: 50px;
 }
 
-.activity-selection .activity-select span{
+.activity-selection .activity-select span {
     display: block;
     color: #80858a;
     float: right;
@@ -450,7 +451,10 @@ home page
     overflow: auto;
     margin: auto;
     position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }
 
 .home-text h2 {
@@ -507,9 +511,9 @@ Admin page
 
 .admin-statistics .statistics-col .statistics-container {
     padding: 25px;
-    border: 2px solid #50848c;
+    border: 2px solid #c51367;
     border-radius: 25px;
-    box-shadow: 0px 0px 20px -5px #29bce2;
+    box-shadow: 0px 0px 20px -10px #c51367;
 }
 
 .admin-statistics .statistics-col .statistics-container h2 {
@@ -596,11 +600,7 @@ Footer
  */
 
 footer {
-    display: block;
-    position: absolute;
-    bottom:0;
-    left:0;
-    right:0;
+    margin-top: 150px;
 }
 
 footer span.footer-copyright {

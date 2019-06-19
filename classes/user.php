@@ -28,7 +28,7 @@ class User extends Handler {
 
         $result = $this->readsData('SELECT * FROM users WHERE email="' . $email . '"');
 
-        if (empty($firstName) && empty($lastName) && empty($password) && empty($email) && empty($gender) && empty($city) && empty($street) && empty($postal)) {
+        if (empty($firstName) && empty($lastName) && empty($password) && empty($email) && empty($gender)) {
             return header("Location: ../account.php?status=Fill all boxes");
         }
 
@@ -42,8 +42,8 @@ class User extends Handler {
 
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-        $this->createData('INSERT INTO users(fname, lname, email, gender, city, street, postal, password) 
-                                VALUES("' . $firstName . '","' . $lastName . '","' . $email . '",' . $gender . ',"' . $city . '","' . $street . '","' . $postal . '","' . $passwordHash . '")');
+        $this->createData('INSERT INTO users(fname, lname, email, gender, password) 
+                                VALUES("' . $firstName . '","' . $lastName . '","' . $email . '","' . $gender . '","' . $passwordHash . '")');
         return header("Location: ../account.php?status=Account has been created");
     }
 
