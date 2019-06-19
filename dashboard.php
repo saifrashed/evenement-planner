@@ -36,8 +36,8 @@ $activity = new Activity();
 
                         <div class="col-xs-12 activity-actions">
                             <h3 class="selected-title"></h3>
-                            <button class="btn btn-primary" onclick="viewTodos()" target="_blank" >Taken</button>
-                            <button class="btn btn-primary" onclick="viewSingle()" target="_blank" >Details</button>
+                            <button class="btn btn-primary" onclick="viewTodos()" target="_blank">Taken</button>
+                            <button class="btn btn-primary" onclick="viewSingle()" target="_blank">Details</button>
                             <button class="btn btn-primary" onclick="viewTimeline()">Planning</button>
                         </div>
                     </div>
@@ -45,9 +45,13 @@ $activity = new Activity();
                     <div class="col-xs-12 activity-members">
                         <h2>members</h2>
                         <div class="col-xs-12 activity-member-selection">
-                            <div class="col-xs-12 activity-member-select">
-                                <span>member</span>
-                            </div>
+                            <?php
+                            if($_GET['activityId']) {
+                                echo $activity->displayMembers($_GET['activityId']);
+                            } else {
+                                echo 'No members available';
+                            }
+                            ?>
                         </div>
                     </div>
 

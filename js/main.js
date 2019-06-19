@@ -53,11 +53,15 @@ $('.logout-btn').click(function () {
  * Activity dynamic selection
  */
 
+var url        = new URL(location.href);
+var activityId = url.searchParams.get("activityId");
+
+console.log(activityId);
+
 var selectedTitle    = $('h3.selected-title');
 var activitySelect   = $('div.activity-select');
 var activitySelected = 1;
-var initialActivity  = activitySelect.first();
-
+var initialActivity  = $('div.activity-select[data-activity-id=' + activityId + ']');
 
 initialActivity.addClass('selected');
 selectedTitle.html(initialActivity.first().attr('data-activity-name'));
@@ -141,47 +145,10 @@ var url_string   = window.location.href; //window.location.href
 var url          = new URL(url_string);
 var errorMessage = url.searchParams.get("err");
 
-console.log(errorMessage);
-
 if (errorMessage) {
     alert(errorMessage);
+    console.log(errorMessage);
 }
-
-/**
- * Graph render admin page.
- *
- * @type {CanvasRenderingContext2D | WebGLRenderingContext}
- */
-
-var values = [];
-
-$('span.statistics-result').each(function () {
-    values.push($(this).text());
-});
-$('span.statistics-result').each(function () {
-    values.push($(this).text());
-});
-
-var ctx = document.getElementById('myChart').getContext('2d');
-
-var chart = new Chart(ctx, {
-    type: 'pie',
-
-    data:    {
-        labels:   ['Amount Products', 'Products Sold', 'Average prices'],
-        datasets: [{
-            label:           'My First dataset',
-            backgroundColor: [
-                '#4c9789',
-                '#3b7968',
-                '#1c6f78',
-            ],
-            borderColor:     '#fff',
-            data:            values
-        }]
-    },
-    options: {}
-});
 
 /**
  * Admin page description toggle

@@ -309,7 +309,6 @@ Control window
     border-bottom: 1px solid #000;
     height: 50px;
     padding: 0px 25px;
-    transition: 0.25s all ease-in-out;
 }
 
 .activity-selection .activity-select:hover {
@@ -320,6 +319,7 @@ Control window
     display: block;
     float: left;
     line-height: 50px;
+    color: #202428;
 }
 
 .activity-selection .activity-select span {
@@ -330,9 +330,7 @@ Control window
 }
 
 .selected {
-    color: #de4087;
     box-shadow: 0px 0px 10px 0px #a0a0a0;
-    transition: 0.25s all ease-in-out;
 }
 
 /** Member selection **/
