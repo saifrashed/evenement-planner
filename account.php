@@ -11,9 +11,9 @@ require "./header.php";
 ?>
 
 <div class="form">
-    <h1>Log in</h1>
+    <h1>Inloggen</h1>
     <p>
-        Login with your given account.
+        Log in met jou persoonlijke account.
     </p>
 
     <form action='includes/registration.php' method='POST' class="register-form">
@@ -31,8 +31,8 @@ require "./header.php";
         <label> <input type="radio" name="gender" value="male"> Male</label>
         <label> <input type="radio" name="gender" value="female"> Female</label>
 
-        <button type="submit">Register</button>
-        <p class="form-message">Already registered? <a id="login-toggle">Sign In</a></p>
+        <button type="submit">Registreren</button>
+        <p class="form-message">Al geregistreerd? <a id="login-toggle">Sign In</a></p>
     </form>
 
     <form action="includes/login.php" method="POST" class="login-form">
@@ -45,7 +45,7 @@ require "./header.php";
         <input type="email" name="email" placeholder="Email"/>
         <input type="password" name="password" placeholder="Password"/>
         <button>Login</button>
-        <p class="form-message">Not registered? <a id="login-toggle">Create an account</a></p>
+<!--        <p class="form-message">Niet geregistreerd? <a id="login-toggle">Meld je aan!</a></p>-->
     </form>
 </div>
 

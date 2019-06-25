@@ -20,20 +20,20 @@ $admin = new Admin();
         <div class="row center-xs">
             <div class="col-xs-4 col-md-4 statistics-col">
                 <div class="statistics-container">
-                    <h2>Amount products</h2>
-                    <span class="statistics-result"><?php echo 0; ?></span>
+                    <h2>Vrijwilligers</h2>
+                    <span class="statistics-result"><?php echo $admin->amountUsers()['amount']; ?></span>
                 </div>
             </div>
             <div class="col-xs-4 col-md-4 statistics-col">
                 <div class="statistics-container">
-                    <h2>Products sold</h2>
-                    <span class="statistics-result"><?php echo 0; ?></span>
+                    <h2>Activiteiten</h2>
+                    <span class="statistics-result"><?php echo $admin->amountActivities()['amount']; ?></span>
                 </div>
             </div>
             <div class="col-xs-4 col-md-4 statistics-col">
                 <div class="statistics-container">
-                    <h2>Average prices</h2>
-                    <span class="statistics-result statistics-price"><?php echo 0; ?></span>
+                    <h2>Budget</h2>
+                    <span class="statistics-result statistics-price"><?php echo '122000,-'; ?></span>
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@ $admin = new Admin();
 
             </div>
         </div>
-
+    </div>
 <?php } ?>
 
 <?php

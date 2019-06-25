@@ -60,7 +60,7 @@ console.log(activityId);
 
 var selectedTitle    = $('h3.selected-title');
 var activitySelect   = $('div.activity-select');
-var activitySelected = 1;
+var activitySelected = activityId;
 var initialActivity  = $('div.activity-select[data-activity-id=' + activityId + ']');
 
 initialActivity.addClass('selected');
@@ -75,8 +75,6 @@ activitySelect.click(function () {
     selectedTitle.html($(this).attr('data-activity-name'));
 
     $(this).addClass('selected');
-
-    console.log(activitySelected);
 });
 
 /**
@@ -89,10 +87,6 @@ function viewTodos() {
 
 function viewSingle() {
     window.location.href = "single_activity.php?activity_id=" + activitySelected;
-}
-
-function viewTimeline() {
-    window.location.href = "timeline.php?activity_id=" + activitySelected;
 }
 
 /**

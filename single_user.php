@@ -18,11 +18,7 @@ $activity = new Activity();
     <div class="container-fluid">
         <div class="row center-xs">
             <div class="col-xs-12 col-md-10 control-window">
-            <?php echo $activity->displaySingle($_GET['activity_id']); ?>
-
-            <?php echo $activity->amountMembers(1); ?>
-
-
+                <?php echo $activity->displaySingle($_GET['userId']); ?>
             </div>
         </div>
     </div>

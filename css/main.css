@@ -5,7 +5,7 @@
 
 @font-face {
     font-family: "main";
-    src: url("../assets/fonts/main.otf");
+    src: url("../assets/fonts/main.ttf");
 }
 
 body {
@@ -271,20 +271,13 @@ Control window
     float: left;
     display: inline-block;
     padding: 25px 25px;
-    border: 1px solid black;
 }
 
 .control-window .activity-toolbar {
     float: right;
     display: inline-block;
     padding: 25px 100px;
-    border: 1px solid black;
 }
-
-.control-window .activity-controls {
-    border: 1px solid black;
-}
-
 
 /** Activity controls **/
 .control-window .activity-actions {
@@ -333,14 +326,19 @@ Control window
     box-shadow: 0px 0px 10px 0px #a0a0a0;
 }
 
+.activity-member-select h5,
+.activity-member-select span {
+    color: #202428;
+}
+
 /** Member selection **/
 .control-window .activity-members {
     margin: 25px 0px 0px 0px;
-    border: 1px solid black;
 }
 
 .control-window .activity-member-selection {
     height: 257.5px;
+    padding: 0;
     border: 1px solid black;
 }
 
@@ -569,6 +567,17 @@ Admin page
     padding: 5px;
     margin: 5px auto;
 }
+
+/**
+Form fields
+ */
+
+.form-window {
+    padding: 50px 25px;
+    box-shadow: 0px 0px 5px -2px #000;
+    border-radius: 50px;
+}
+
 
 /**
 

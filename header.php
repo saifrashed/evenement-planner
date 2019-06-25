@@ -61,13 +61,13 @@ $title = setTitle($_SERVER['PHP_SELF'], dirname($_SERVER['SCRIPT_NAME']));
             <?php if (!isset($_SESSION['fname']) && !isset($_SESSION['lname'])) { ?>
                 <li>
                     <a href="account.php">
-                        <i class="fas fa-user right-offset"></i>Log in
+                        <i class="fas fa-user right-offset"></i>Inloggen
                     </a>
                 </li>
             <?php } else { ?>
                 <li>
                     <button type="submit" class="logout-btn">
-                        <i class="fas fa-sign-out-alt right-offset"></i>Logout
+                        <i class="fas fa-sign-out-alt right-offset"></i>Uitloggen
                     </button>
                 </li>
             <?php } ?>
@@ -84,7 +84,7 @@ $title = setTitle($_SERVER['PHP_SELF'], dirname($_SERVER['SCRIPT_NAME']));
 
         <?php if (!isset($_SESSION['fname']) && !isset($_SESSION['lname'])) { ?>
             <ul style="float: right;">
-                <li><a href="account.php"><i class="fas fa-user right-offset"></i>Login</a></li>
+                <li><a href="account.php"><i class="fas fa-user right-offset"></i>Inloggen</a></li>
             </ul>
         <?php } else { ?>
             <ul style="float: right;">
@@ -99,7 +99,7 @@ $title = setTitle($_SERVER['PHP_SELF'], dirname($_SERVER['SCRIPT_NAME']));
             <nav class="col-xs-12">
                 <ul>
                     <li><a href="dashboard.php">Dashboard</a></li>
-                    <li><a class="logout-btn">Logout</a></li>
+                    <li><a class="logout-btn">Uitloggen</a></li>
                 </ul>
             </nav>
         </div>

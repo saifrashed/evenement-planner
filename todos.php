@@ -17,8 +17,6 @@ $activity = new Activity();
 
     <div class="container-fluid">
         <div class="row center-xs">
-            <p><?php echo '<pre>' . var_dump($_SESSION) . '</pre>' ?></p>
-
             <div class="col-xs-12 col-md-10 control-window">
 
                 <div class="col-xs-12 col-md-6 activity-display">
@@ -46,7 +44,7 @@ $activity = new Activity();
                         <h2>Taak</h2>
                         <div class="col-xs-12">
                             <div class="col-xs-12">
-                                <span>Beschrijving</span>
+                                <!--                                --><?php //$activity->getMemberActivitiesDescription($_GET['activity_id'], $_SESSION['id']) ?>
                             </div>
                         </div>
                     </div>

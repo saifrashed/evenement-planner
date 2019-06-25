@@ -34,7 +34,7 @@ class Activity extends Handler {
     public function displayMembers($activityId) {
 
         if ($this->amountMembers($activityId) == 0) {
-            return 'Geen leden in dit activiteit';
+            return 'Geen leden in deze activiteit';
         } else {
             $result = $this->readsData('SELECT users.id ,users.fname, users.lname, users.email FROM users, activity, user_activity WHERE activity.activity_id=' . $activityId . ' 
                                             AND user_activity.activity_id=' . $activityId . '
@@ -42,8 +42,8 @@ class Activity extends Handler {
             $html   = '';
 
             while ($row = $result->fetch()) {
-                $html .= '<a href="?userId=' . $row['id'] . '"><div class="col-xs-12 activity-member-select">';
-                $html .= '<h5>' . $row['fname'] . '</h5>';
+                $html .= '<a href="single_user.php?userId=' . $row['id'] . '"><div class="col-xs-12 activity-member-select">';
+                $html .= '<h5>' . $row['fname'] . ' ' . $row['lname'] . '</h5>';
                 $html .= '<span>' . $row['email'] . '</span>';
                 $html .= '</div></a>';
             }
@@ -76,11 +76,8 @@ class Activity extends Handler {
      * @param $userId
      * @return string
      */
-    public function getMemberActivities($activityid, $userId) {
-        $result = $this->readsData('SELECT DISTINCT activity_todo.description AS "title", categories.description, status.description 
-                                          FROM users, activity, activity_todo, categories, status 
-                                          WHERE activity_todo.user_id="' . $userId . '" AND activity_todo.activity_id="' . $activityid . '"
-                                          AND activity_todo.cat_id=categories.cat_id AND activity_todo.status_id=status.status_id;');
+    public function getMemberActivities($activityId, $userId) {
+        $result = $this->readsData('SELECT DISTINCT * FROM activity_todo WHERE activity_todo.user_id = ' . $userId . ' AND activity_todo.activity_id = ' . $activityId . ';');
         $html   = '';
 
         while ($row = $result->fetch()) {
@@ -91,4 +88,6 @@ class Activity extends Handler {
 
         return $html;
     }
+
+
 }
