@@ -24,7 +24,17 @@ $activity = new Activity();
                 <div class="col-xs-12 col-md-6 activity-display">
                     <h2>Activiteiten</h2>
                     <div class="col-xs-12 activity-selection">
-                        <?php echo $activity->displayArchive(); ?>
+                        <?php
+
+                        switch ($_SESSION['role']) {
+                            case 'beheerder':
+                                echo $activity->displayArchive();
+                                break;
+                            case 'vrijwilliger':
+                                echo $activity->displayVolunteerArchive($_SESSION['id']);
+                                break;
+                        }
+                        ?>
                     </div>
                 </div>
 

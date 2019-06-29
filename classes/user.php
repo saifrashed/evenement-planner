@@ -56,17 +56,14 @@ class User extends Handler {
      */
     public function loginUser($email, $password) {
 
-        $result = $this->readsData('SELECT * FROM users WHERE email="' . $email . '";');
-
-        $row = $result->fetch();
-
-        $status = password_verify($password, $row['password']);
+        $result = $this->readsData('SELECT * FROM users WHERE email="' . $email . '";')->fetch();
+        $status = password_verify($password, $result['password']);
 
         if ($status) {
-            $_SESSION['id']    = $row['id'];
-            $_SESSION['fname'] = $row['fname'];
-            $_SESSION['lname'] = $row['lname'];
-            $_SESSION['role']  = $this->userRole($row['id']);
+            $_SESSION['id']    = $result['id'];
+            $_SESSION['fname'] = $result['fname'];
+            $_SESSION['lname'] = $result['lname'];
+            $_SESSION['role']  = $this->userRole($result['id']);
 
             return header("Location: ../dashboard.php");
         } else {
@@ -86,10 +83,8 @@ class User extends Handler {
     }
 
     public function userRole($userId) {
-        $result = $this->readsData('SELECT role.description FROM users, role WHERE users.id='.$userId.' AND users.role=role.role_id;');
-        $row = $result->fetch();
-
-        return $row['description'];
+        $result = $this->readsData('SELECT role.description FROM users, role WHERE users.id=' . $userId . ' AND users.role=role.role_id;')->fetch();
+        return $result['description'];
     }
 
 

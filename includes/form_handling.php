@@ -15,12 +15,17 @@ $operation = $_GET['operation'];
 echo var_dump($operation);
 
 
+
+
 switch($operation) {
     case 'update_activity':
-        $admin->updateActivity($_GET['id'], $_GET['title'], $_GET['description'], $_GET['date']);
+        $admin->updateActivity($_GET['id'], $_GET['title'], $_GET['description'], $_GET['date'], $_GET['delete-users'], $_GET['add-users']);
         break;
     case 'delete_activity':
         $admin->deleteActivity($_GET['id']);
+        break;
+    case 'delete_user':
+        $admin->deleteUser($_GET['id']);
         break;
     default:
         echo 'no operation';

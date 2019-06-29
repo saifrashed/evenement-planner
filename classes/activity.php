@@ -31,14 +31,26 @@ class Activity extends Handler {
         return $html;
     }
 
+    public function displayVolunteerArchive($userId) {
+        $result = $this->readsData('SELECT DISTINCT activity.activity_name, activity.activity_id, activity.date_planned FROM activity, users, user_activity WHERE user_activity.user_id='.$userId.' AND user_activity.activity_id=activity.activity_id;');
+        $html   = '';
+
+        while ($row = $result->fetch()) {
+            $html .= '<a href="?activityId=' . $row['activity_id'] . '"><div class="activity-select" data-activity-name="' . $row['activity_name'] . '" data-activity-id="' . $row['activity_id'] . '">';
+            $html .= '<h5>' . $row['activity_name'] . '</h5>';
+            $html .= '<span>Datum: ' . $row['date_planned'] . ' / Leden: ' . $this->amountMembers($row['activity_id']) . '</span>';
+            $html .= '</div></a>';
+        }
+
+        return $html;
+    }
+
     public function displayMembers($activityId) {
 
         if ($this->amountMembers($activityId) == 0) {
             return 'Geen leden in deze activiteit';
         } else {
-            $result = $this->readsData('SELECT users.id ,users.fname, users.lname, users.email FROM users, activity, user_activity WHERE activity.activity_id=' . $activityId . ' 
-                                            AND user_activity.activity_id=' . $activityId . '
-                                            AND users.id=user_activity.user_id;');
+            $result = $this->readsData('SELECT users.id ,users.fname, users.lname, users.email FROM users, activity, user_activity WHERE activity.activity_id=' . $activityId . ' AND user_activity.activity_id=' . $activityId . ' AND users.id=user_activity.user_id;');
             $html   = '';
 
             while ($row = $result->fetch()) {
@@ -60,13 +72,8 @@ class Activity extends Handler {
     }
 
     public function amountMembers($activityId) {
-        $result = $this->readsData('SELECT COUNT(*) AS memberAmount FROM users, activity, user_activity WHERE activity.activity_id=' . $activityId . ' 
-                                            AND user_activity.activity_id=' . $activityId . '
-                                            AND users.id=user_activity.user_id;');
-
-        $amount = $result->fetch();
-
-        return $amount['memberAmount'];
+        $result = $this->readsData('SELECT COUNT(*) AS memberAmount FROM users, activity, user_activity WHERE activity.activity_id=' . $activityId . ' AND user_activity.activity_id=' . $activityId . ' AND users.id=user_activity.user_id;')->fetch();
+        return $result['memberAmount'];
     }
 
     /**
@@ -81,7 +88,7 @@ class Activity extends Handler {
         $html   = '';
 
         while ($row = $result->fetch()) {
-            $html .= '<div class="activity-select">';
+            $html .= '<div class="todo-select">';
             $html .= '<h5>' . $row['title'] . '</h5>';
             $html .= '</div>';
         }

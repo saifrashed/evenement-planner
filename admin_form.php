@@ -23,13 +23,19 @@ $admin = new Admin();
 
                 switch ($_GET['fieldset']) {
                     case 'activity':
-                        echo $admin->updateActivityForm($_GET['activity_id']);
+                        echo $admin->displayActivityForm($_GET['activity_id']);
                         break;
                     case 'user':
-                        echo $admin->updateUserForm($_GET['user_id']);
+                        echo $admin->displayUserForm($_GET['user_id']);
+                        break;
+                    case 'add_activity':
+                        echo $admin->addActivityForm();
+                        break;
+                    case 'add_user':
+                        echo $admin->addUserForm();
                         break;
                     default:
-                        echo 'wtf';
+                        echo 'ERROR 404';
                         break;
                 }
 

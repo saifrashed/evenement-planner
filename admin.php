@@ -45,6 +45,8 @@ $admin = new Admin();
                 <div class="col-xs-12 col-md-12">
                     <a class="btn btn-primary" href="?tableData=activities">Activiteiten</a>
                     <a class="btn btn-primary" href="?tableData=users">Gebruikers</a>
+                    <a class="btn btn-primary" href="admin_form.php?fieldset=<?php echo ($_GET['tableData'] == 'users' ? 'add_user' : 'add_activity'); ?>" style="float:right;"><i class="fas fa-plus"> </i> Voeg toe</a>
+
 
                     <?php
 
@@ -62,7 +64,6 @@ $admin = new Admin();
 
                     ?>
                 </div>
-
             </div>
         </div>
     </div>

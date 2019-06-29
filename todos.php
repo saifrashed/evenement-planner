@@ -21,7 +21,7 @@ $activity = new Activity();
 
                 <div class="col-xs-12 col-md-6 activity-display">
                     <h2>Taken</h2>
-                    <div class="col-xs-12 activity-selection">
+                    <div class="col-xs-12 todo-selection">
                         <?php echo $activity->getMemberActivities($_GET['activity_id'], $_SESSION['id']); ?>
                     </div>
                 </div>
@@ -40,11 +40,11 @@ $activity = new Activity();
                         </div>
                     </div>
 
-                    <div class="col-xs-12 activity-members">
+                    <div class="col-xs-12">
                         <h2>Taak</h2>
                         <div class="col-xs-12">
-                            <div class="col-xs-12">
-                                <!--                                --><?php //$activity->getMemberActivitiesDescription($_GET['activity_id'], $_SESSION['id']) ?>
+                            <div class="col-xs-12 todo-description">
+                                <?php ?>
                             </div>
                         </div>
                     </div>
