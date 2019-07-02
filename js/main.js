@@ -56,13 +56,11 @@ $('.logout-btn').click(function () {
 var url        = new URL(location.href);
 var activityId = url.searchParams.get("activityId");
 
-var selectedTitle    = $('h3.selected-title');
 var activitySelect   = $('div.activity-select');
 var activitySelected = activityId;
 var initialActivity  = $('div.activity-select[data-activity-id=' + activityId + ']');
 
 initialActivity.addClass('selected');
-selectedTitle.html(initialActivity.first().attr('data-activity-name'));
 
 activitySelect.click(function () {
     activitySelect.each(function () {
@@ -70,7 +68,6 @@ activitySelect.click(function () {
     });
 
     activitySelected = $(this).attr('data-activity-id');
-    selectedTitle.html($(this).attr('data-activity-name'));
 
     $(this).addClass('selected');
 });
@@ -80,7 +77,11 @@ activitySelect.click(function () {
  * To do selections
  */
 
-var todoSelect   = $('div.todo-select');
+var todoId     = url.searchParams.get("todo_id");
+var todoSelect = $('div.todo-select');
+
+var initialTodo = $('div.todo-select[data-todo-id=' + todoId + ']');
+initialTodo.addClass('selected');
 
 todoSelect.click(function () {
     todoSelect.each(function () {
@@ -88,6 +89,29 @@ todoSelect.click(function () {
     });
 
     $(this).addClass('selected');
+});
+
+/**
+ * to do status colors
+ */
+
+todoSelect.each(function() {
+
+    var status = $(this).attr('data-status-id');
+
+    switch(status) {
+        case 'In wacht':
+            $(this).css('background-color', '#f0f1f6');
+            break;
+        case 'Bezig':
+            $(this).css('background-color', '#e6b300');
+            break;
+        case 'Klaar':
+            $(this).css('background-color', '#a7dcb2');
+            break;
+        default:
+        // code block
+    }
 });
 
 /**

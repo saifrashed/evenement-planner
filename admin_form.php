@@ -34,6 +34,9 @@ $admin = new Admin();
                     case 'add_user':
                         echo $admin->addUserForm();
                         break;
+                    case 'add_todo':
+                        echo $admin->addTodoForm();
+                        break;
                     default:
                         echo 'ERROR 404';
                         break;

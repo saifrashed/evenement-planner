@@ -48,16 +48,16 @@ class Activity extends Handler {
     public function displayMembers($activityId) {
 
         if ($this->amountMembers($activityId) == 0) {
-            return 'Geen leden in deze activiteit';
+            return '<div class="selection-message">Geen leden in deze activiteit</div>';
         } else {
             $result = $this->readsData('SELECT users.id ,users.fname, users.lname, users.email FROM users, activity, user_activity WHERE activity.activity_id=' . $activityId . ' AND user_activity.activity_id=' . $activityId . ' AND users.id=user_activity.user_id;');
             $html   = '';
 
             while ($row = $result->fetch()) {
-                $html .= '<a href="single_user.php?userId=' . $row['id'] . '"><div class="col-xs-12 activity-member-select">';
+                $html .= '<div class="col-xs-12 activity-member-select">';
                 $html .= '<h5>' . $row['fname'] . ' ' . $row['lname'] . '</h5>';
                 $html .= '<span>' . $row['email'] . '</span>';
-                $html .= '</div></a>';
+                $html .= '</div>';
             }
 
             return $html;
@@ -86,6 +86,17 @@ class Activity extends Handler {
         return $result['memberAmount'];
     }
 
+    public function amountTodos($activityId) {
+        $result = $this->readsData('SELECT COUNT(*) AS "amount_todos" FROM activity_todo WHERE activity_id="' . $activityId . '"')->fetch();
+        return $result['amount_todos'];
+    }
+
+    public function activityDetail($column, $activityId) {
+        $result = $this->readsData('SELECT * FROM activity WHERE activity_id="' . $activityId . '";')->fetch();
+        return $result[$column];
+    }
+
+
     /**
      * Gets the user assigned todolist and displays it on the dash
      *
@@ -93,17 +104,21 @@ class Activity extends Handler {
      * @param $userId
      * @return string
      */
-    public function getMemberActivities($activityId, $userId) {
-        $result = $this->readsData('SELECT DISTINCT * FROM activity_todo WHERE activity_todo.user_id = ' . $userId . ' AND activity_todo.activity_id = ' . $activityId . ';');
-        $html   = '';
+    public function getMemberActivities($activityId, $userId, $role) {
+        if ($role === 'beheerder') {
+            $result = $this->readsData('SELECT DISTINCT * FROM activity_todo WHERE activity_todo.activity_id = ' . $activityId . ';');
+
+        } else {
+            $result = $this->readsData('SELECT DISTINCT * FROM activity_todo WHERE activity_todo.user_id = ' . $userId . ' AND activity_todo.activity_id = ' . $activityId . ';');
+        }
+
+        $html = '';
 
         while ($row = $result->fetch()) {
-            $html .= '<div class="todo-select" data-todo-id="'.$row['todo_id'].'" data-status-id="'.$this->getStatus($row['status_id']).'">';
+            $html .= '<a href="?activity_id=' . $activityId . '&todo_id=' . $row['todo_id'] . '"><div class="todo-select" data-todo-id="' . $row['todo_id'] . '" data-status-id="' . $this->getStatus($row['status_id']) . '">';
             $html .= '<h5>' . $row['title'] . '</h5>';
-            $html .= '<h5>' . $this->getCategory($row['cat_id']) . '</h5>';
-            $html .= '<span>'. $this->getCategory($row['cat_id']) .'</span>';
-
-            $html .= '</div>';
+            $html .= '<span>' . $this->getCategory($row['cat_id']) . ' / ' . $this->getStatus($row['status_id']) . '</span>';
+            $html .= '</div></a>';
         }
 
         return $html;
@@ -112,7 +127,12 @@ class Activity extends Handler {
 
     public function getDescription($todoId) {
         $status = $this->readsData('SELECT description FROM activity_todo WHERE todo_id = ' . $todoId . ';')->fetch();
-        return $status['description'];
+
+        if ($status) {
+            return $status['description'];
+        } else {
+            return 'Geen taak geselecteerd';
+        }
     }
 
     public function getCategory($catId) {

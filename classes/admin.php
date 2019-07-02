@@ -44,14 +44,51 @@ class Admin extends Handler {
             $html .= '<tr>';
 
             foreach ($row as $key => $value) {
-                $html .= ($key === 'activity_description' ? '<td>' . $this->limitSummary($value, 5) . ' ...</td>' : '<td>' . $value . '</td>');
+
+                if ($type === 'todo') {
+
+                    if ($key === 'description') {
+                        $html .= '<td>' . $this->limitSummary($value, 5) . ' ...</td>';
+                    }
+
+                    if ($key === 'title') {
+                        $html .= '<td>' . $value . ' </td>';
+                    }
+
+                    if ($key === 'todo_id') {
+                        $html .= '<td>' . $value . ' </td>';
+                    }
+
+                    if ($key === 'user_id') {
+                        $html .= '<td>' . $this->getUser($value) . ' </td>';
+                    }
+
+                    if ($key === 'activity_id') {
+                        $html .= '<td>' . $this->getActivityName($value) . ' </td>';
+                    }
+
+                    if ($key === 'cat_id') {
+                        $html .= '<td>' . $this->getCategory($value) . ' </td>';
+                    }
+
+                    if ($key === 'status_id') {
+                        $html .= '<td>' . $this->getStatus($value) . '</td>';
+                    }
+
+                } else {
+                    $html .= ($key === 'activity_description' ? '<td>' . $this->limitSummary($value, 5) . ' ...</td>' : '<td>' . $value . '</td>');
+                }
             }
 
-            $html .= '<td><a href="admin_form.php?fieldset=' . $type . '&' . $type . '_id=' . $row[$id] . '" class="btn btn-secondary" style="width: 100%;"><i class="fas fa-pencil-alt action-icons"></i> Update </a></td>';
+            if ($type !== 'todo') {
+                if ($type !== 'user') {
+                    $html .= '<td><a href="admin_form.php?fieldset=' . $type . '&' . $type . '_id=' . $row[$id] . '" class="btn btn-secondary" style="width: 100%;"><i class="fas fa-pencil-alt action-icons"></i> Update </a></td>';
+                }
+            }
 
             $html .= '<td><form action="./includes/form_handling.php" method="GET">';
             $html .= '<input type="hidden" name="operation" value="delete_' . $type . '" />';
-            $html .= '<input type="hidden" name="id" value="' . ($type == 'user' ? $row['id'] : $row['activity_id']) . '" />';
+            $html .= '<input type="hidden" name="id" value="' . $this->correctDeleteId($type, $row) . '" />';
             $html .= '<button type="submit" class="btn btn-danger" style="width: 100%;">';
             $html .= '<i class="fas fa-times action-icons"></i></button></form></td>';
 
@@ -80,6 +117,26 @@ class Admin extends Handler {
         return $result;
     }
 
+    public function getUser($userId) {
+        $result = $this->readsData('SELECT fname, lname FROM users WHERE id=' . $userId . ';')->fetch();
+        return $result['fname'] . ' ' . $result['lname'];
+    }
+
+    public function getActivityName($activityId) {
+        $result = $this->readsData('SELECT activity_name FROM activity WHERE activity_id=' . $activityId . ';')->fetch();
+        return $result['activity_name'];
+    }
+
+    public function getCategory($catId) {
+        $status = $this->readsData('SELECT description FROM categories WHERE cat_id = ' . $catId . ';')->fetch();
+        return $status['description'];
+    }
+
+    public function getStatus($statusId) {
+        $status = $this->readsData('SELECT description FROM status WHERE status_id = ' . $statusId . ';')->fetch();
+        return $status['description'];
+    }
+
     /**
      * Admin tables
      */
@@ -92,6 +149,11 @@ class Admin extends Handler {
     public function displayUserTable() {
         $result = $this->readsData('SELECT users.id, users.fname, users.lname, users.email, gender.description AS "geslacht", role.description AS "rol" FROM users, role, gender WHERE users.role=role.role_id AND users.gender=gender.gender_id;');
         return $this->createTable($result, 'user');
+    }
+
+    public function displayTodoTable() {
+        $result = $this->readsData('SELECT * FROM activity_todo');
+        return $this->createTable($result, 'todo');
     }
 
     /**
@@ -119,13 +181,24 @@ class Admin extends Handler {
         $result = $this->updateData('UPDATE activity SET activity_name = "' . $title . '", activity_description = "' . $description . '", date_planned="' . $date . '" WHERE activity_id=' . $activityId . ';');
     }
 
+    public function updateTodoStatus($todoId, $activityId, $statusId) {
+        $result = $this->createData('UPDATE activity_todo SET status_id = "' . $statusId . '" WHERE todo_id = "' . $todoId . '"');
+
+        header('Location: ../todos.php?activity_id=' . $activityId . '&todo_id=' . $todoId . '');
+
+    }
+
     /**
      * Add methods
      */
 
     public function addActivity($activityName, $activityDesc, $plannedDate) {
         $currentDate = date('Y-m-d');
-        $result = $this->createData('INSERT INTO activity (activity_name, activity_description, date_planned, date_created) VALUES ("'.$activityName.'", "'.$activityDesc.'", "'.$plannedDate.'", "'.$currentDate.'");');
+        $result      = $this->createData('INSERT INTO activity (activity_name, activity_description, date_planned, date_created) VALUES ("' . $activityName . '", "' . $activityDesc . '", "' . $plannedDate . '", "' . $currentDate . '");');
+    }
+
+    public function addTodo($todoName, $todoDesc, $activityId, $userId, $catId) {
+        $result = $this->createData('INSERT INTO activity_todo (title, description, user_id, activity_id, cat_id, status_id) VALUES ("' . $todoName . '", "' . $todoDesc . '", "' . $activityId . '", "' . $userId . '", "' . $catId . '", "1");');
     }
 
     /**
@@ -138,6 +211,10 @@ class Admin extends Handler {
 
     public function deleteUser($userId) {
         $result = $this->deleteData('DELETE FROM users WHERE id="' . $userId . '";');
+    }
+
+    public function deleteTodo($todoId) {
+        $result = $this->deleteData('DELETE FROM activity_todo WHERE todo_id="' . $todoId . '";');
     }
 
 
@@ -168,17 +245,17 @@ class Admin extends Handler {
                         <input type="hidden" name="id" value="{$activityId}">
                     
                         <div class="form-group">
-                            <label>Title</label>
+                            <label>Titel</label>
                             <input type="text" name="title" value="{$activityData['activity_name']}" class="form-control">
                         </div>
                         
                         <div class="form-group">
-                            <label>Description</label>
+                            <label>Beschrijving</label>
                             <textarea class="form-control" name="description" value="{$row['activity_description']}" rows="3">{$activityData['activity_description']}</textarea>
                         </div>
                         
                         <div class="form-group">
-                            <label>Datum</label>
+                            <label>Geplande datum</label>
                             <input type="text" name="date" value="{$activityData['date_planned']}" class="form-control" placeholder="yyyy-mm-dd">
                         </div>
                               
@@ -196,30 +273,6 @@ class Admin extends Handler {
                             </select>
                           </div>
                           
-                        <button type="submit" class="btn btn-primary">Update</button>
-                    </form>
-HTML;
-    }
-
-    public function displayUserForm($userId) {
-        $user = $this->readsData('SELECT * FROM users WHERE id=' . $userId . ';')->fetch();
-
-
-        return <<<HTML
-         <h1>Update: {$user['fname']} {$user['lname']}</h1>
-                    <form action="./includes/form_handling.php" method="GET">
-                        <input type="hidden" name="id" value="{$userId}">
-                          <div class="form-group">
-                            <label>Voeg toe aan activiteiten</label>
-                            <select multiple class="form-control">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
-                              <option>5</option>
-                            </select>
-                          </div>
-                        
                         <button type="submit" class="btn btn-primary">Update</button>
                     </form>
 HTML;
@@ -294,6 +347,69 @@ HTML;
 HTML;
     }
 
+    public function addTodoForm() {
+
+        $activities = $this->readsData('SELECT activity_id ,activity_name FROM activity');
+        $users      = $this->readsData('SELECT id, fname, lname FROM users');
+        $categories = $this->readsData('SELECT cat_id ,description FROM categories');
+
+        $activitiesHtml = '';
+        $usersHtml      = '';
+        $categoriesHtml = '';
+
+        while ($row = $activities->fetch()) {
+            $activitiesHtml .= '<option value="' . $row['activity_id'] . '">' . $row['activity_name'] . '</option>';
+        }
+
+        while ($row = $users->fetch()) {
+            $usersHtml .= '<option value="' . $row['id'] . '">' . $row['fname'] . ' ' . $row['lname'] . '</option>';
+        }
+
+        while ($row = $categories->fetch()) {
+            $categoriesHtml .= '<option value="' . $row['cat_id'] . '">' . $row['description'] . '</option>';
+        }
+
+        return <<<HTML
+         <h1>Voeg nieuwe taak toe</h1>
+                    <form action="./includes/form_handling.php" method="GET">
+                        <input type="hidden" name="operation" value="add_todo">
+
+                        <div class="form-group">
+                            <label>Taak naam</label>
+                            <input type="text" name="todo_name" placeholder="Taak naam" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Taak beschrijving</label>
+                            <textarea class="form-control" name="todo_desc" placeholder="Taak beschrijving"  rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Selecteer de activiteit</label>
+                            <select class="form-control" name="activity_id">
+                                {$activitiesHtml}
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Selecteer de gebruiker</label>
+                            <select class="form-control" name="user_id">
+                                {$usersHtml}
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Selecteer de categorie</label>
+                            <select class="form-control" name="cat_id">
+                                {$categoriesHtml}
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Voeg toe</button>
+                    </form>
+HTML;
+    }
+
     /**
      * Basic methods
      */
@@ -301,6 +417,44 @@ HTML;
     public function limitSummary($string, $limit) {
         $words = explode(' ', $string);
         return implode(' ', array_slice($words, 0, $limit));
+    }
+
+    public function correctFieldset($tableData) {
+
+        switch ($tableData) {
+            case 'activities':
+                return 'add_activity';
+                break;
+            case 'users':
+                return 'add_user';
+                break;
+            case'todos':
+                return 'add_todo';
+                break;
+            default:
+                return 'add_activity';
+                break;
+        }
+
+    }
+
+    public function correctDeleteId($type, $row) {
+
+        switch ($type) {
+            case 'activity':
+                return $row['activity_id'];
+                break;
+            case 'user':
+                return $row['id'];
+                break;
+            case'todo':
+                return $row['todo_id'];
+                break;
+            default:
+                return 'error';
+                break;
+        }
+
     }
 
 }

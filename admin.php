@@ -45,8 +45,8 @@ $admin = new Admin();
                 <div class="col-xs-12 col-md-12">
                     <a class="btn btn-primary" href="?tableData=activities">Activiteiten</a>
                     <a class="btn btn-primary" href="?tableData=users">Gebruikers</a>
-                    <a class="btn btn-primary" href="admin_form.php?fieldset=<?php echo ($_GET['tableData'] == 'users' ? 'add_user' : 'add_activity'); ?>" style="float:right;"><i class="fas fa-plus"> </i> Voeg toe</a>
-
+                    <a class="btn btn-primary" href="?tableData=todos">Taken</a>
+                    <a class="btn btn-primary" href="admin_form.php?fieldset=<?php echo $admin->correctFieldset($_GET['tableData']) ?>" style="float:right;"><i class="fas fa-plus"> </i> Voeg toe</a>
 
                     <?php
 
@@ -56,6 +56,9 @@ $admin = new Admin();
                                 break;
                             case 'activities':
                                 echo $admin->displayActivityTable();
+                                break;
+                            case 'todos':
+                                echo $admin->displayTodoTable();
                                 break;
                             default:
                                  echo $admin->displayActivityTable();

@@ -52,7 +52,7 @@ $title = setTitle($_SERVER['PHP_SELF'], dirname($_SERVER['SCRIPT_NAME']));
             <?php if ($_SESSION['role'] == 'beheerder') { ?>
                 <li>
                     <a href="admin.php">
-                        <i class="fas fa-cogs"></i>
+                        <i class="fas fa-cogs"></i> Beheer
                     </a>
                 </li>
             <?php } ?>
@@ -61,7 +61,7 @@ $title = setTitle($_SERVER['PHP_SELF'], dirname($_SERVER['SCRIPT_NAME']));
             <?php if (!isset($_SESSION['fname']) && !isset($_SESSION['lname'])) { ?>
                 <li>
                     <a href="account.php">
-                        <i class="fas fa-user right-offset"></i>Inloggen
+                        <i class="fas fa-user right-offset"></i> Inloggen
                     </a>
                 </li>
             <?php } else { ?>

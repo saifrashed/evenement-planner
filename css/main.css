@@ -364,9 +364,11 @@ Control window
 
 .todo-description {
     height: 257.5px;
-    padding: 0;
+    padding: 25px;
     border: 1px solid black;
     overflow-y: scroll;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
 }
 
 /**
