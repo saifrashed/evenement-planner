@@ -256,7 +256,10 @@ Control window
 
 /** Activity controls **/
 .control-window .activity-actions {
-    border: 1px solid black;
+    border: 1px solid #000;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    padding: 25px;
 }
 
 .control-window .activity-actions button {
@@ -269,11 +272,12 @@ Control window
     height: 500px;
     padding: 0;
     border: 1px solid #000;
+    border-radius: 25px;
     overflow-x: scroll;
 }
 
 .activity-selection .activity-select {
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #a5a6a7;
     height: 50px;
     padding: 0px 25px;
 }
@@ -314,13 +318,15 @@ Control window
     height: 257.5px;
     padding: 0;
     border: 1px solid black;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
     overflow-y: scroll;
 }
 
 .control-window .activity-member-select {
     height: 50px;
     padding: 0;
-    border: 1px solid black;
+    border: 1px solid #a5a6a7;
 }
 
 /* TO DO page */

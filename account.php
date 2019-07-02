@@ -45,7 +45,7 @@ require "./header.php";
         <input type="email" name="email" placeholder="Email"/>
         <input type="password" name="password" placeholder="Password"/>
         <button>Login</button>
-<!--        <p class="form-message">Niet geregistreerd? <a id="login-toggle">Meld je aan!</a></p>-->
+        <!--<p class="form-message">Niet geregistreerd? <a id="login-toggle">Meld je aan!</a></p>-->
     </form>
 </div>
 

@@ -27,6 +27,9 @@ switch($operation) {
     case 'delete_user':
         $admin->deleteUser($_GET['id']);
         break;
+    case 'add_activity':
+        $admin->addActivity($_GET['activity_name'], $_GET['activity_desc'], $_GET['planned_date']);
+        break;
     default:
         echo 'no operation';
         break;

@@ -44,7 +44,7 @@ $activity = new Activity();
                         <h2>Taak</h2>
                         <div class="col-xs-12">
                             <div class="col-xs-12 todo-description">
-                                <?php ?>
+                                <?php echo $activity->getDescription($_GET['todo_id']) ?>
                             </div>
                         </div>
                     </div>

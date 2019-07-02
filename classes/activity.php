@@ -32,7 +32,7 @@ class Activity extends Handler {
     }
 
     public function displayVolunteerArchive($userId) {
-        $result = $this->readsData('SELECT DISTINCT activity.activity_name, activity.activity_id, activity.date_planned FROM activity, users, user_activity WHERE user_activity.user_id='.$userId.' AND user_activity.activity_id=activity.activity_id;');
+        $result = $this->readsData('SELECT DISTINCT activity.activity_name, activity.activity_id, activity.date_planned FROM activity, users, user_activity WHERE user_activity.user_id=' . $userId . ' AND user_activity.activity_id=activity.activity_id;');
         $html   = '';
 
         while ($row = $result->fetch()) {
@@ -64,10 +64,20 @@ class Activity extends Handler {
         }
     }
 
-    public function displaySingle($productId) {
-        $row = $this->readsData('SELECT * FROM activity WHERE activity_id=' . $productId . ';')->fetch();
+    public function displayTodos($activityId, $catId = null) {
 
-        $html = '<h2>' . $row['activity_name'] . '</h2>';
+        if ($catId !== null) {
+            $activityTodos = $this->readsData('SELECT * FROM activity_todo WHERE activity_id="' . $activityId . '" AND cat_id="' . $catId . '";');
+        } else {
+            $activityTodos = $this->readsData('SELECT * FROM activity_todo WHERE activity_id=' . $activityId . ';');
+        }
+
+        $html = '';
+
+        while ($row = $activityTodos->fetch()) {
+            $html .= '<p>' . $row['title'] . '</p>';
+        }
+
         return $html;
     }
 
@@ -88,12 +98,37 @@ class Activity extends Handler {
         $html   = '';
 
         while ($row = $result->fetch()) {
-            $html .= '<div class="todo-select">';
+            $html .= '<div class="todo-select" data-todo-id="'.$row['todo_id'].'" data-status-id="'.$this->getStatus($row['status_id']).'">';
             $html .= '<h5>' . $row['title'] . '</h5>';
+            $html .= '<h5>' . $this->getCategory($row['cat_id']) . '</h5>';
+            $html .= '<span>'. $this->getCategory($row['cat_id']) .'</span>';
+
             $html .= '</div>';
         }
 
         return $html;
+    }
+
+
+    public function getDescription($todoId) {
+        $status = $this->readsData('SELECT description FROM activity_todo WHERE todo_id = ' . $todoId . ';')->fetch();
+        return $status['description'];
+    }
+
+    public function getCategory($catId) {
+        $status = $this->readsData('SELECT description FROM categories WHERE cat_id = ' . $catId . ';')->fetch();
+        return $status['description'];
+    }
+
+
+    public function getStatus($statusId) {
+        $status = $this->readsData('SELECT description FROM status WHERE status_id = ' . $statusId . ';')->fetch();
+        return $status['description'];
+    }
+
+    public function getActivityTitle($activityId) {
+        $activity = $this->readsData('SELECT * FROM activity WHERE activity_id=' . $activityId . ';')->fetch();
+        return $activity['activity_name'];
     }
 
 

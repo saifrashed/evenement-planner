@@ -123,8 +123,9 @@ class Admin extends Handler {
      * Add methods
      */
 
-    public function addActivity() {
-        $result = $this->deleteData('DELETE FROM activity WHERE activity_id=' . $activityId . ';');
+    public function addActivity($activityName, $activityDesc, $plannedDate) {
+        $currentDate = date('Y-m-d');
+        $result = $this->createData('INSERT INTO activity (activity_name, activity_description, date_planned, date_created) VALUES ("'.$activityName.'", "'.$activityDesc.'", "'.$plannedDate.'", "'.$currentDate.'");');
     }
 
     /**
@@ -236,6 +237,21 @@ HTML;
                     <form action="./includes/form_handling.php" method="GET">
                         <input type="hidden" name="operation" value="add_activity">
 
+                        <div class="form-group">
+                            <label>Activiteit naam</label>
+                            <input type="text" name="activity_name" placeholder="Activity name" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Activiteit beschrijving</label>
+                            <textarea class="form-control" name="activity_desc" placeholder="Activity description"  rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Datum activiteit</label>
+                            <input type="text" name="planned_date"  class="form-control" placeholder="yyyy-mm-dd">
+                        </div>
+
                         <button type="submit" class="btn btn-primary">Voeg toe</button>
                     </form>
 HTML;
@@ -244,9 +260,34 @@ HTML;
     public function addUserForm() {
         return <<<HTML
          <h1>Voeg nieuwe gebruiker toe</h1>
-                    <form action="./includes/form_handling.php" method="GET">
+                    <form action='includes/registration.php' method='POST' class="register-form">
                         <input type="hidden" name="operation" value="add_user">
 
+                        <div class="form-group">
+                            <label>Voornaam</label>
+                            <input class="form-control" type="text" name="fname" placeholder="First name" maxlength="50"/>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Achternaam</label>
+                            <input class="form-control" type="text" name='lname' placeholder="Last name" maxlength="50"/>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Wachtwoord</label>
+                            <input class="form-control" type="password" name='password' placeholder="password" maxlength="50"/>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>E-mail</label>
+                            <input class="form-control" type="email" name='email' placeholder="Email address" maxlength="50"/>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label> <input type="radio" name="gender" value="male"> Man</label>
+                            <label> <input type="radio" name="gender" value="female"> Vrouw</label>
+                        </div>
+                              
                         
                         <button type="submit" class="btn btn-primary">Voeg toe</button>
                     </form>

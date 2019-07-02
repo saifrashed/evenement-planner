@@ -56,8 +56,6 @@ $('.logout-btn').click(function () {
 var url        = new URL(location.href);
 var activityId = url.searchParams.get("activityId");
 
-console.log(activityId);
-
 var selectedTitle    = $('h3.selected-title');
 var activitySelect   = $('div.activity-select');
 var activitySelected = activityId;
@@ -73,6 +71,21 @@ activitySelect.click(function () {
 
     activitySelected = $(this).attr('data-activity-id');
     selectedTitle.html($(this).attr('data-activity-name'));
+
+    $(this).addClass('selected');
+});
+
+
+/**
+ * To do selections
+ */
+
+var todoSelect   = $('div.todo-select');
+
+todoSelect.click(function () {
+    todoSelect.each(function () {
+        $(this).removeClass('selected');
+    });
 
     $(this).addClass('selected');
 });
