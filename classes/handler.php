@@ -69,8 +69,4 @@ class Handler {
         return $result->rowCount();
     }
 
-    public function test() {
-        $this->connect = new PDO("$this->dbdriver:host=" . $this->host . "; dbname=" . $this->dbname . "", $this->username, $this->password);
-    }
-
 }

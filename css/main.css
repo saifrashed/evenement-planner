@@ -336,6 +336,7 @@ Control window
     padding: 0;
     border: 1px solid #000;
     overflow-x: scroll;
+    border-radius: 25px;
 }
 
 .todo-select {
